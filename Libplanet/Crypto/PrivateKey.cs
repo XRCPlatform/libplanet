@@ -94,7 +94,7 @@ namespace Libplanet.Crypto
         {
         }
 
-        internal PrivateKey(byte[] unverifiedKey, bool informedConsent)
+        public PrivateKey(byte[] unverifiedKey, bool informedConsent)
             : this(GenerateKeyFromBytes(unverifiedKey))
         {
             // The `informedConsent` parameter mainly purposes to prevent this overload from
@@ -108,7 +108,7 @@ namespace Libplanet.Crypto
             }
         }
 
-        private PrivateKey(ECPrivateKeyParameters keyParam)
+        public PrivateKey(ECPrivateKeyParameters keyParam)
         {
             KeyParam = keyParam;
         }
@@ -153,7 +153,7 @@ namespace Libplanet.Crypto
         [Pure]
         public ImmutableArray<byte> ByteArray => ToByteArray().ToImmutableArray();
 
-        internal ECPrivateKeyParameters KeyParam { get; }
+        public ECPrivateKeyParameters KeyParam { get; }
 
         public static bool operator ==(PrivateKey left, PrivateKey right) => left.Equals(right);
 
@@ -355,7 +355,7 @@ namespace Libplanet.Crypto
         public byte[] ToByteArray() =>
             KeyParam.D.ToByteArrayUnsigned();
 
-        internal static ECDomainParameters GetECParameters()
+        public static ECDomainParameters GetECParameters()
         {
             return GetECParameters("secp256k1");
         }

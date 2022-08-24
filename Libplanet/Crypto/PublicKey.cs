@@ -47,7 +47,7 @@ namespace Libplanet.Crypto
         {
         }
 
-        internal PublicKey(ECPublicKeyParameters keyParam)
+        public PublicKey(ECPublicKeyParameters keyParam)
         {
             KeyParam = keyParam;
         }

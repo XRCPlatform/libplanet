@@ -34,7 +34,7 @@ namespace Libplanet.Store
         public static string DecodeKey(in KeyBytes keyBytes)
         {
             ImmutableArray<byte> immutableBytes = keyBytes.ByteArray;
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NETSTANDARD2_1
             byte[] neverChangedBytes = System.Runtime.CompilerServices.Unsafe
                 .As<ImmutableArray<byte>, byte[]>(ref immutableBytes);
             return KeyEncoding.GetString(neverChangedBytes);
